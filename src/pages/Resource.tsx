@@ -1,18 +1,20 @@
 import React from 'react';
-import NavBar from '../components/Navbar';
+import NavBar from '../components/NavBar';
 import '../styles/Resource.css';
 import ResourceCard from '../components/ResourceCard';
 import LearnJS from '../components/LearnJS';
+import JavaScriptChallenges from '../components/JavaScriptChallenges';
 import UnimayorLogo from '../assets/images/codekey_unimayor.png';
 import FuturisticBackground from '../components/FuturisticBackground';
+import Footer from '../components/Footer';
 import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';
 
-const HomePage: React.FC = () => {
+const Resource: React.FC = () => {
   return (
-    <div className="min-h-screen w-full flex flex-col relative bg-[#0D0D0D]">
+    <div className="min-h-screen flex flex-col bg-[#0D0D0D] overflow-x-hidden">
       <FuturisticBackground />
       <NavBar />
-      <main className="flex-grow flex flex-col items-center justify-center px-4 pt-24 relative z-10">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 pt-24 pb-16 relative z-10">
         <div className="mb-8">
           <img 
             src={UnimayorLogo} 
@@ -41,12 +43,16 @@ const HomePage: React.FC = () => {
             link="/recursos/typescript"
           />
         </div>
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl mb-16">
           <LearnJS />
         </div>
+        <div className="flex justify-center w-full mb-16">
+          <JavaScriptChallenges />
+        </div>
       </main>
+      <Footer />
     </div>
   );
 };
 
-export default HomePage;
+export default Resource;

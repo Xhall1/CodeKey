@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
@@ -19,11 +20,13 @@ const LearnJS: React.FC = () => {
             Aprende a hacer arreglos
           </h3>
           
-          <Button 
-            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-8 py-2 rounded-full text-lg"
-          >
-            Ver más
-          </Button>
+          <Link to="/recursos/javascript">
+            <Button 
+              className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-8 py-2 rounded-full text-lg"
+            >
+              Ver más
+            </Button>
+          </Link>
 
           <div className="flex space-x-2 mt-8">
             <div className="w-2 h-2 rounded-full bg-fuchsia-500"></div>
