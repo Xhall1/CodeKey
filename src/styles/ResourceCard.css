@@ -1,0 +1,42 @@
+.resource-card {
+    background-color: rgba(0, 0, 0, 0.562);
+    border: 1px solid #5b0c63;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    width: 350px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.resource-card:hover {
+    background-color: #e170ee;
+    color: black;
+    box-shadow: 0 0 10px #F260FF, 0 0 50px #F260FF;
+    transform: translateY(-5px) scale(1.05);
+}
+
+.resource-logo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resource-title {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0.5rem 0;
+}
+
+.resource-description {
+    color: #D1D5DB;
+}
+
+.resource-card:hover .resource-title,
+.resource-card:hover .resource-description {
+    color: black;
+}
