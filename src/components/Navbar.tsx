@@ -29,7 +29,7 @@ const NavBar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8"> 
           <NavLink to="/recursos">Recursos</NavLink>
-          <NavLink to="/retos">Retos</NavLink>
+          <NavLink to="/Challenges">Retos</NavLink>
           <NavLink to="/ranking">Ranking</NavLink>
           <NavLink to="/about">About</NavLink>
         </div>

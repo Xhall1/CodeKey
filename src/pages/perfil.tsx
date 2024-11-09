@@ -15,21 +15,25 @@ const ProfilePage: React.FC = () => {
     challengesProgress: 40
   };
 
-  const ProgressBar: React.FC<{ progress: number, title: string, icon: React.ReactNode }> = ({ progress, title, icon }) => (
-    <div className="mb-6">
+  const GradientProgress: React.FC<{ value: number; className?: string; title: string; icon: React.ReactNode }> = ({ value, className, title, icon }) => (
+    <div className={`mb-6 ${className}`}>
       <div className="flex items-center mb-2">
         {icon}
         <h3 className="text-white text-lg font-semibold ml-2">{title}</h3>
       </div>
-      <div className="bg-gray-700 rounded-full h-4 w-full overflow-hidden">
+      <div className="relative h-8 bg-gray-700 rounded-full overflow-hidden shadow-inner">
         <motion.div 
-          className="bg-[#F160FE] h-full rounded-full"
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#F160FE] to-[#7B2FFE] rounded-full"
           initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          animate={{ width: `${Math.min(value, 100)}%` }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         />
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+          <span className="text-white font-bold text-lg drop-shadow-lg">
+            Progreso: {Math.min(value, 100)}%
+          </span>
+        </div>
       </div>
-      <p className="text-white text-right mt-1">{progress}%</p>
     </div>
   );
 
@@ -76,8 +80,16 @@ const ProfilePage: React.FC = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
           >
             <h2 className="text-2xl font-semibold text-white mb-4">Progreso</h2>
-            <ProgressBar progress={user.resourcesProgress} title="Recursos" icon={<Book size={24} className="text-[#F160FE]" />} />
-            <ProgressBar progress={user.challengesProgress} title="Retos" icon={<Trophy size={24} className="text-[#F160FE]" />} />
+            <GradientProgress 
+              value={user.resourcesProgress} 
+              title="Progreso de Recursos" 
+              icon={<Book size={24} className="text-[#F160FE]" />} 
+            />
+            <GradientProgress 
+              value={user.challengesProgress} 
+              title="Progreso de Retos" 
+              icon={<Trophy size={24} className="text-[#F160FE]" />} 
+            />
           </motion.div>
 
           <motion.div 

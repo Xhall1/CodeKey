@@ -7,11 +7,12 @@ import ProfilePage from './pages/perfil';
 import ConfigurationPage from './pages/configuracion';
 import RankingPage from './pages/ranking';
 import AboutPage from './pages/about';
+import Challenges from './pages/Challenges';
 import JavaScriptResourcesPage from './pages/recursos/javascript';
 import JavaScriptLevel1 from './pages/recursos/javascript/nivel-1';
 import JavaScriptLevel2 from './pages/recursos/javascript/nivel-2';
 import JavaScriptLevel3 from './pages/recursos/javascript/nivel-3';
-import JavaScriptChallenges from './pages/retos';
+import JavaScriptChallenges from './pages/retos/javascript/retosJavascript';
 import JavaScriptChallengesBasicLevel1 from './pages/retos/javascript/basico-1';
 import JavaScriptChallengesBasicLevel2 from './pages/retos/javascript/basico-2';
 import JavaScriptChallengesBasicLevel3 from './pages/retos/javascript/basico-3';
@@ -30,11 +31,12 @@ const App: React.FC = () => {
         <Route path="/configuracion" element={<ConfigurationPage />} />
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/Challenges" element={<Challenges />} />
         <Route path="/recursos/javascript" element={<JavaScriptResourcesPage />} />
         <Route path="/recursos/javascript/nivel-1" element={<JavaScriptLevel1 />} />
         <Route path="/recursos/javascript/nivel-2" element={<JavaScriptLevel2 />} />
         <Route path="/recursos/javascript/nivel-3" element={<JavaScriptLevel3 />} />
-        <Route path="/retos" element={<JavaScriptChallenges />} />
+        <Route path="/retos/retosJavascript" element={<JavaScriptChallenges />} />
         <Route path="/retos/javascript/basico-1" element={<JavaScriptChallengesBasicLevel1 />} />
         <Route path="/retos/javascript/basico-2" element={<JavaScriptChallengesBasicLevel2 />} />
         <Route path="/retos/javascript/basico-3" element={<JavaScriptChallengesBasicLevel3 />} />

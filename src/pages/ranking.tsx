@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import FuturisticBackground from '../components/FuturisticBackground';
 import { Trophy, Star, Zap, Medal } from 'lucide-react';
 
-// Datos de ejemplo para el ranking
 const rankingData = [
   { id: 1, name: "Ana García", avatar: "/placeholder.svg?height=50&width=50", level: 42, points: 15000 },
   { id: 2, name: "Carlos Rodríguez", avatar: "/placeholder.svg?height=50&width=50", level: 40, points: 14500 },
