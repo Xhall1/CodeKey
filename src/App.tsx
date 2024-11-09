@@ -6,6 +6,7 @@ import Resource from './pages/Resource';
 import ProfilePage from './pages/perfil';
 import ConfigurationPage from './pages/configuracion';
 import RankingPage from './pages/ranking';
+import AboutPage from './pages/about';
 import JavaScriptResourcesPage from './pages/recursos/javascript';
 import JavaScriptLevel1 from './pages/recursos/javascript/nivel-1';
 import JavaScriptLevel2 from './pages/recursos/javascript/nivel-2';
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         <Route path="/perfil" element={<ProfilePage />} />
         <Route path="/configuracion" element={<ConfigurationPage />} />
         <Route path="/ranking" element={<RankingPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/recursos/javascript" element={<JavaScriptResourcesPage />} />
         <Route path="/recursos/javascript/nivel-1" element={<JavaScriptLevel1 />} />
         <Route path="/recursos/javascript/nivel-2" element={<JavaScriptLevel2 />} />
