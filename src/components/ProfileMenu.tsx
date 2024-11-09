@@ -1,24 +1,50 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// eslint-disable-next-line react/prop-types
-const ProfileMenu = ({ isOpen, onClose }) => {
+interface ProfileMenuProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ProfileMenu: React.FC<ProfileMenuProps> = ({ isOpen, onClose }) => {
   return (
-    <div
-      className={`absolute right-0 mt-2 w-48 bg-black rounded-md shadow-lg transition-all duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-      style={{ top: '100%' }}
-    >
-      <div className="flex flex-col">
-        <Link to="/profile" className="text-white px-4 py-2 hover:bg-purple-600 transition duration-200" onClick={onClose}>
-          Mi Perfil
-        </Link>
-        <Link to="/settings" className="text-white px-4 py-2 hover:bg-purple-600 transition duration-200" onClick={onClose}>
-          Configuración
-        </Link>
-        <Link to="/Login" className="text-white px-4 py-2 hover:bg-purple-600 transition duration-200" onClick={onClose}>
-          Cerrar Sesión
-        </Link>
-      </div>
-    </div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+          className="absolute right-0 mt-2 w-48 bg-black/80 backdrop-blur-md rounded-md shadow-lg border border-[#F160FE]/20"
+          style={{ top: '100%' }}
+        >
+          <div className="flex flex-col p-2 space-y-2">
+            <Link 
+              to="/perfil" 
+              className="text-white px-4 py-2 rounded-md hover:bg-[#F160FE]/20 transition duration-200 flex items-center"
+              onClick={onClose}
+            >
+              <span className="mr-2">👤</span> Mi Perfil
+            </Link>
+            <Link 
+              to="/configuracion" 
+              className="text-white px-4 py-2 rounded-md hover:bg-[#F160FE]/20 transition duration-200 flex items-center"
+              onClick={onClose}
+            >
+              <span className="mr-2">⚙️</span> Configuración
+            </Link>
+            <Link 
+              to="/login" 
+              className="text-white px-4 py-2 rounded-md hover:bg-[#F160FE]/20 transition duration-200 flex items-center"
+              onClick={onClose}
+            >
+              <span className="mr-2">🚪</span> Cerrar Sesión
+            </Link>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

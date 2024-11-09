@@ -33,7 +33,7 @@ const Login: React.FC = () => {
     }
 
     setError('');
-    navigate('/Resource');
+    navigate('/recursos');
   };
 
   const handleCloseModal = (): void => {

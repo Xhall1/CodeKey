@@ -20,7 +20,7 @@ const JavaScriptLevel1: React.FC = () => {
     const logs: string[] = [];
 
     console.log = (...args) => {
-      logs.push(args.map(arg => JSON.stringify(arg)).join(' '));
+      logs.push(args.map(arg => typeof arg === 'string' ? arg : JSON.stringify(arg)).join(' '));
     };
 
     try {
@@ -43,7 +43,7 @@ const JavaScriptLevel1: React.FC = () => {
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
-    const correct = answer === '["Rojo", "Verde", "Azul"]';
+    const correct = answer === 'Hola, mundo!';
     setIsCorrect(correct);
     if (correct) {
       confetti({
@@ -58,7 +58,6 @@ const JavaScriptLevel1: React.FC = () => {
   };
 
   const goToNextLevel = () => {
-    // Redirigir al nivel 2
     window.location.href = '/recursos/javascript/nivel-2';
   };
 
@@ -76,7 +75,7 @@ const JavaScriptLevel1: React.FC = () => {
               className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(241,96,254,0.8)]"
             />
           </div>
-          <h1 className="text-4xl font-bold text-white">Array</h1>
+          <h1 className="text-4xl font-bold text-white">Variables y Console.log</h1>
         </div>
 
         {/* Content Grid */}
@@ -84,36 +83,30 @@ const JavaScriptLevel1: React.FC = () => {
           {/* Left Column - Explanation */}
           <div className="bg-black/50 p-6 rounded-lg border border-[#F160FE]/20">
             <p className="text-white/90 text-lg leading-relaxed">
-              Los arrays son objetos similares a una lista cuyo prototipo 
-              proporciona métodos para efectuar operaciones de recorrido y 
-              de mutación. Tanto la longitud como el tipo de los elementos de 
-              un array son variables. Dado que la longitud de un array puede 
-              cambiar en cualquier momento, y los datos se pueden 
-              almacenar en ubicaciones no contiguas
+              En JavaScript, las variables son contenedores para almacenar datos.
+              Puedes declarar una variable usando la palabra clave 'let'.
+              Para mostrar información en la consola, usamos 'console.log()'.
+              Esto es útil para depurar y ver el contenido de las variables.
+              Nota: console.log() muestra el contenido de las cadenas sin comillas.
             </p>
           </div>
 
           {/* Right Column - Code Example */}
           <div className="bg-black/50 p-6 rounded-lg border border-[#F160FE]/20">
             <div className="font-mono text-lg">
-              <div className="text-gray-500">// Crear Array</div>
+              <div className="text-gray-500">// Declarar una variable</div>
               <div className="mb-2">
                 <span className="text-[#F160FE]">let</span>
-                <span className="text-white"> frutas = </span>
-                <span className="text-white">[</span>
-                <span className="text-green-400">"Manzana"</span>
-                <span className="text-white">, </span>
-                <span className="text-green-400">"Pera"</span>
-                <span className="text-white">, </span>
-                <span className="text-green-400">"Uva"</span>
-                <span className="text-white">];</span>
+                <span className="text-white"> mensaje = </span>
+                <span className="text-green-400">"Hola, mundo!"</span>
+                <span className="text-white">;</span>
               </div>
               <div>
                 <span className="text-white">console</span>
                 <span className="text-[#F160FE]">.log</span>
-                <span className="text-white">(frutas);</span>
+                <span className="text-white">(mensaje);</span>
               </div>
-              <div className="text-gray-500">// ["Manzana", "Pera", "Uva"]</div>
+              <div className="text-gray-500">// Salida: Hola, mundo!</div>
             </div>
           </div>
         </div>
@@ -122,12 +115,12 @@ const JavaScriptLevel1: React.FC = () => {
         <div className="w-full max-w-6xl mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Code Editor */}
           <div className="bg-black/50 p-6 rounded-lg border border-[#F160FE]/20 min-h-[300px]">
-            <h2 className="text-xl font-semibold text-white mb-4">Pruebalo</h2>
+            <h2 className="text-xl font-semibold text-white mb-4">Pruébalo</h2>
             <textarea
               className="w-full h-[200px] bg-black/50 rounded p-4 text-white font-mono text-lg resize-none"
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              placeholder="//Escribe código aquí"
+              placeholder="// Escribe tu código aquí"
               style={{
                 fontSize: '18px',
                 lineHeight: '1.5',
@@ -164,14 +157,14 @@ const JavaScriptLevel1: React.FC = () => {
             <h2 className="text-2xl font-semibold text-white mb-4">Quiz</h2>
             <p className="text-white text-lg mb-4">¿Cuál es la salida del siguiente código?</p>
             <pre className="bg-black/50 p-4 rounded mb-4 text-white font-mono text-lg">
-              {`let colores = ["Rojo", "Verde", "Azul"];
-console.log(colores);`}
+              {`let mensaje = "Hola, mundo!";
+console.log(mensaje);`}
             </pre>
             <div className="space-y-2">
               {[
-                '["Rojo", "Verde", "Azul"]',
-                'Rojo, Verde, Azul',
-                '["Rojo"]',
+                'Hola, mundo!',
+                '"Hola, mundo!"',
+                'mensaje',
                 'undefined'
               ].map((answer) => (
                 <button

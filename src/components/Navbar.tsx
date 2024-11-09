@@ -30,6 +30,7 @@ const NavBar = () => {
         <div className="hidden md:flex space-x-8"> 
           <NavLink to="/recursos">Recursos</NavLink>
           <NavLink to="/retos">Retos</NavLink>
+          <NavLink to="/ranking">Ranking</NavLink>
           <NavLink to="/about">About</NavLink>
         </div>
         
@@ -60,6 +61,7 @@ const NavBar = () => {
         <div className="md:hidden mt-4">
           <NavLink to="/recursos" mobile>Recursos</NavLink>
           <NavLink to="/retos" mobile>Retos</NavLink>
+          <NavLink to="/ranking" mobile>Ranking</NavLink>
           <NavLink to="/about" mobile>About</NavLink>
           <div className="mt-4 flex items-center justify-between">
             <button className="text-white">你 idioma</button>

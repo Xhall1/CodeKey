@@ -7,7 +7,7 @@ const JavaScriptChallenges: React.FC = () => {
   return (
     <div className="w-full max-w-6xl mx-auto p-4 grid md:grid-cols-2 gap-8 items-center">
       <div className="overflow-hidden rounded-lg bg-[#0D0D0D] shadow-lg shadow-[#F160FE]/10 max-w-sm mx-auto">
-        <Link to="/retos/javascript" className="block">
+        <Link to="/retos" className="block">
           <div className="flex flex-col items-center p-8 space-y-6">
             <div className="w-20 h-20 bg-[#0D0D0D] flex items-center justify-center rounded-full">
               <SiJavascript className="w-16 h-16 text-white" />
