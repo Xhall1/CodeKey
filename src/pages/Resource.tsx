@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navbar';
 import '../styles/Resource.css';
 import ResourceCard from '../components/ResourceCard';
 import LearnJS from '../components/LearnJS';

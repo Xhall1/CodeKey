@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 import Modal from '@/components/Modal';
 import logo from '../assets/images/codekey_unimayor.png';
-import text from '../assets/images/CodekeyUnimayor.png';
+import text from '../assets/images/CodeKeyUnimayor.png';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();

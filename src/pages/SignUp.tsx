@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Login.css'; 
 import logo from '../assets/images/codekey_unimayor.png'; 
-import text from '../assets/images/CodekeyUnimayor.png';
+import text from '../assets/images/CodeKeyUnimayor.png';
 import Modal from '../components/Modal'; 
 
 const SignUp: React.FC = () => {

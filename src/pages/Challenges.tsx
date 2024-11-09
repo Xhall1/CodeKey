@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FuturisticBackground from '../components/FuturisticBackground';
 import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FuturisticBackground from '../components/FuturisticBackground';
 import { Lock, User, Bell, Globe, Trash2, X } from 'lucide-react';

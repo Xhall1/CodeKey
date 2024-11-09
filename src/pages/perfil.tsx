@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FuturisticBackground from '../components/FuturisticBackground';
 import { Book, Trophy, Mail } from 'lucide-react';

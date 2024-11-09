@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import NavBar from '@/components/NavBar'
+import NavBar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import FuturisticBackground from '@/components/FuturisticBackground'
 import UnimayorLogo from '@/assets/images/codekey_unimayor.png'
