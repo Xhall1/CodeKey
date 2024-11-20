@@ -89,9 +89,9 @@ const LearningPath: React.FC = () => {
 
   const levels: Level[] = useMemo(() => [
     { id: 1, active: true, route: 'nivel-1', title: "Fundamentos de JavaScript", description: "Aprende los conceptos básicos de JavaScript, incluyendo variables, tipos de datos y estructuras de control.", icon: BookOpen },
-    { id: 2, active: false, route: 'nivel-2', title: "Operaciones Básicas", description: "Domina las operaciones aritméticas, lógicas y de comparación en JavaScript.", icon: Calculator },
-    { id: 3, active: false, route: 'nivel-3', title: "Arrays", description: "Explora la creación, manipulación y métodos de arrays en JavaScript.", icon: List },
-    { id: 4, active: false, route: 'nivel-4', title: "Funciones", description: "Aprende a crear y utilizar funciones en JavaScript.", icon: Zap },
+    { id: 2, active: true, route: 'nivel-2', title: "Operaciones Básicas", description: "Domina las operaciones aritméticas, lógicas y de comparación en JavaScript.", icon: Calculator },
+    { id: 3, active: true, route: 'nivel-3', title: "Arrays", description: "Explora la creación, manipulación y métodos de arrays en JavaScript.", icon: List },
+    { id: 4, active: true, route: 'nivel-4', title: "Funciones", description: "Aprende a crear y utilizar funciones en JavaScript.", icon: Zap },
     { id: 5, active: false, route: 'nivel-5', title: "Objetos", description: "Descubre cómo trabajar con objetos y sus propiedades en JavaScript.", icon: Globe },
     { id: 6, active: false, route: 'nivel-6', title: "DOM y Eventos", description: "Manipula el DOM y maneja eventos en el navegador con JavaScript.", icon: Cpu },
     { id: 7, active: false, route: 'nivel-7', title: "Asincronía", description: "Explora callbacks, promesas y async/await para manejar operaciones asíncronas.", icon: Server },
