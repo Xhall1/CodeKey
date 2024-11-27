@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 import Modal from '@/components/Modal';
 import logo from '../assets/images/codekey_unimayor.png';
@@ -7,16 +7,13 @@ import text from '../assets/images/CodeKeyUnimayor.png';
 import axios from 'axios';
 
 const Login: React.FC = () => {
-
-  //Esto trata de ponerlo en las variables de entorno porque no se como.
-  const api = 'http://localhost:3000/api/v1'
-
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [modalMessage, setModalMessage] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  const API_URL = 'http://localhost:3000/api/v1';
 
   const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@unimayor\.edu\.co$/;
@@ -27,40 +24,48 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     if (!isValidEmail(email)) {
-      setError('El correo debe ser del dominio @unimayor.edu.co');
+      setModalMessage('El correo debe ser del dominio @unimayor.edu.co');
       setShowModal(true);
       return;
     }
 
     if (password === '') {
-      setError('Por favor ingresa tu contraseña');
+      setModalMessage('Por favor ingresa tu contraseña');
       setShowModal(true);
       return;
     }
 
     try {
-      //Aqui haces la petición
-      //POST - http://localhost:3000/api/v1/auth/login
-      const response = await axios.post(`${api}/auth/login`, {
+
+      //Peticion al login
+      const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password
-      })
+      });
 
+      //Guardo el token en el localStorage
+      const { token } = response.data;
+      localStorage.setItem('authToken', token);
+      navigate('/recursos');
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        const { message } = error.response.data;
+        setModalMessage(`Error al iniciar sesión ${message}`);
+        setShowModal(true);
 
-      //Establecemos el jwt en los headers
-  
-
-    } catch (error: any) {
-      console.log(error.response.data);
+      } else {
+        setModalMessage('Hubo un problema con la solicitud. Intenta más tarde.');
+        setShowModal(true);
+      }
     }
-
-    setError('');
-    navigate('/about');
   };
 
   const handleCloseModal = (): void => {
     setShowModal(false);
-    setError('');
+  };
+
+  const handleRegisterRedirect = (): void => {
+    navigate('/signup');
   };
 
   return (
@@ -85,7 +90,7 @@ const Login: React.FC = () => {
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               />
-              <i>Correo electronico</i>
+              <i>Correo</i>
             </div>
             <div className="inputBox">
               <input
@@ -97,7 +102,8 @@ const Login: React.FC = () => {
               <i>Contraseña</i>
             </div>
             <div className="links">
-              <a href="#">Olvidé la contraseña</a>
+              {/* Redirigir al olvido de contraseña */}
+              <Link to="/forgot-password">Olvidé la contraseña</Link>
               <Link to="/signup">Registrate</Link>
             </div>
             <div className="inputBox">
@@ -109,7 +115,7 @@ const Login: React.FC = () => {
 
       {showModal && (
         <Modal
-          message={error}
+          message={modalMessage}
           onClose={handleCloseModal}
         />
       )}

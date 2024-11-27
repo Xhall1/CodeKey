@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import NavBar from '@/components/Navbar'
@@ -6,6 +6,7 @@ import UnimayorLogo from '@/assets/images/codekey_unimayor.png'
 import FuturisticBackground from '@/components/FuturisticBackground'
 import Footer from '@/components/Footer'
 import { LockIcon, BookOpen, Calculator, List, Zap, Globe, Cpu, Server } from 'lucide-react'
+import axios from 'axios'
 
 interface Level {
   id: number;
@@ -20,6 +21,41 @@ const LevelCircle: React.FC<{ level: Level; onClick: () => void }> = React.memo(
   const [isHovered, setIsHovered] = useState(false)
   const Icon = level.icon
 
+  const API_URL = 'http://localhost:3000/api/v1';
+
+
+
+  const [data, setData] = useState<any>(null);
+  const [authToken] = useState<string | null>(localStorage.getItem('authToken')); // Solo leer el token una vez
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!authToken) return; // Evitar la llamada si no hay token
+
+      try {
+        console.log("Realizando la petición a la API");
+        const response = await axios.get(`${API_URL}/lesson/getMany/1`, {
+
+          //De esta manera mandas una peticion a un endpoint protegido.
+          headers: {
+            'Authorization': `Bearer ${authToken}`
+          }
+        });
+        setData(response.data);
+      } catch (error) {
+        console.error("Error en la petición", error);
+      }
+    };
+
+    // Solo ejecutar la petición una vez al montar el componente
+    fetchData();
+  }, []); // Vacío, lo que asegura que solo se ejecute una vez al montar
+
+
+
+
+
+  console.log(data);
   return (
     <motion.div
       className="relative"
@@ -28,8 +64,8 @@ const LevelCircle: React.FC<{ level: Level; onClick: () => void }> = React.memo(
     >
       <motion.div
         className={`w-24 h-24 rounded-full flex flex-col items-center justify-center cursor-pointer transition-all duration-300 ease-in-out
-          ${level.active 
-            ? 'bg-gradient-to-br from-[#F160FE] to-[#7B2FFE] text-white hover:shadow-lg hover:shadow-[#F160FE]/50' 
+          ${level.active
+            ? 'bg-gradient-to-br from-[#F160FE] to-[#7B2FFE] text-white hover:shadow-lg hover:shadow-[#F160FE]/50'
             : 'bg-gray-800 text-gray-500'}
         `}
         whileHover={{ scale: 1.1 }}
@@ -89,9 +125,9 @@ const LearningPath: React.FC = () => {
 
   const levels: Level[] = useMemo(() => [
     { id: 1, active: true, route: 'nivel-1', title: "Fundamentos de JavaScript", description: "Aprende los conceptos básicos de JavaScript, incluyendo variables, tipos de datos y estructuras de control.", icon: BookOpen },
-    { id: 2, active: false, route: 'nivel-2', title: "Operaciones Básicas", description: "Domina las operaciones aritméticas, lógicas y de comparación en JavaScript.", icon: Calculator },
-    { id: 3, active: false, route: 'nivel-3', title: "Arrays", description: "Explora la creación, manipulación y métodos de arrays en JavaScript.", icon: List },
-    { id: 4, active: false, route: 'nivel-4', title: "Funciones", description: "Aprende a crear y utilizar funciones en JavaScript.", icon: Zap },
+    { id: 2, active: true, route: 'nivel-2', title: "Operaciones Básicas", description: "Domina las operaciones aritméticas, lógicas y de comparación en JavaScript.", icon: Calculator },
+    { id: 3, active: true, route: 'nivel-3', title: "Arrays", description: "Explora la creación, manipulación y métodos de arrays en JavaScript.", icon: List },
+    { id: 4, active: true, route: 'nivel-4', title: "Funciones", description: "Aprende a crear y utilizar funciones en JavaScript.", icon: Zap },
     { id: 5, active: false, route: 'nivel-5', title: "Objetos", description: "Descubre cómo trabajar con objetos y sus propiedades en JavaScript.", icon: Globe },
     { id: 6, active: false, route: 'nivel-6', title: "DOM y Eventos", description: "Manipula el DOM y maneja eventos en el navegador con JavaScript.", icon: Cpu },
     { id: 7, active: false, route: 'nivel-7', title: "Asincronía", description: "Explora callbacks, promesas y async/await para manejar operaciones asíncronas.", icon: Server },
@@ -108,14 +144,14 @@ const LearningPath: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 flex flex-col items-center justify-center">
-      <motion.div 
+      <motion.div
         className="w-full mb-12"
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <div className="relative h-8 bg-gray-700 rounded-full overflow-hidden shadow-inner">
-          <motion.div 
+          <motion.div
             className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#F160FE] to-[#7B2FFE] rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
@@ -132,16 +168,16 @@ const LearningPath: React.FC = () => {
         </div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="flex flex-wrap justify-center gap-8 mb-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         {levels.map((level) => (
-          <LevelCircle 
-            key={level.id} 
-            level={level} 
+          <LevelCircle
+            key={level.id}
+            level={level}
             onClick={() => level.active && setSelectedLevel(level.id)}
           />
         ))}
@@ -188,14 +224,14 @@ const JavaScriptResourcesPage: React.FC = () => {
       <FuturisticBackground />
       <NavBar />
       <main className="flex-grow flex flex-col items-center justify-start px-4 pt-24 pb-16 relative z-10">
-        <motion.div 
+        <motion.div
           className="mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <img 
-            src={UnimayorLogo} 
+          <img
+            src={UnimayorLogo}
             alt="UnimayorLogoHome"
             className="w-32 h-auto filter drop-shadow-[0_0_8px_rgba(241,96,254,0.8)]"
           />
@@ -208,7 +244,7 @@ const JavaScriptResourcesPage: React.FC = () => {
         >
           RECURSOS DE JAVASCRIPT
         </motion.h2>
-        
+
         <LearningPath />
       </main>
       <Footer />
