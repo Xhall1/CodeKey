@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import NavBar from '../components/Navbar';
-import '../styles/Resource.css';
-import ResourceCard from '../components/ResourceCard';
-import LearnJS from '../components/LearnJS';
-import JavaScriptChallenges from '../components/JavaScriptChallenges';
-import UnimayorLogo from '../assets/images/codekey_unimayor.png';
-import FuturisticBackground from '../components/FuturisticBackground';
-import Footer from '../components/Footer';
-import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import NavBar from "../components/Navbar";
+import "../styles/Resource.css";
+import ResourceCard from "../components/ResourceCard";
+import LearnJS from "../components/LearnJS";
+import JavaScriptChallenges from "../components/JavaScriptChallenges";
+import UnimayorLogo from "../assets/images/codekey_unimayor.png";
+import FuturisticBackground from "../components/FuturisticBackground";
+import Footer from "../components/Footer";
+import { SiJavascript, SiPython, SiTypescript } from "react-icons/si";
+import axios from "axios";
 
-
-const API_URL = 'http://localhost:3000/api/v1';
-
-
-
-
+const API_URL = "http://localhost:3000/api/v1";
 
 const Resource: React.FC = () => {
-
   const [data, setData] = useState<any>(null);
-
 
   //Al cargar esta pagina renderiza los cursos
   useEffect(() => {
@@ -30,16 +23,14 @@ const Resource: React.FC = () => {
         setData(response.data);
       } catch (error) {
         console.error(error);
-
       }
-    }
+    };
 
     fetchData();
-
   }, []);
 
-  if(!data){
-    return <div>Cargando...</div>
+  if (!data) {
+    return <div>Cargando...</div>;
   }
 
   console.log(data);
