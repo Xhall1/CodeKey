@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import '../styles/Login.css';
 import Modal from '@/components/Modal';
 import logo from '../assets/images/codekey_unimayor.png';
@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   //Esto trata de ponerlo en las variables de entorno porque no se como.
   const api = 'http://localhost:3000/api/v1'
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -45,13 +45,17 @@ const Login: React.FC = () => {
         email,
         password
       })
-      console.log(response);
+
+
+      //Establecemos el jwt en los headers
+  
+
     } catch (error: any) {
       console.log(error.response.data);
     }
 
-    // setError('');
-    // navigate('/about');
+    setError('');
+    navigate('/about');
   };
 
   const handleCloseModal = (): void => {
@@ -81,7 +85,7 @@ const Login: React.FC = () => {
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               />
-              <i>Usuario</i>
+              <i>Correo electronico</i>
             </div>
             <div className="inputBox">
               <input

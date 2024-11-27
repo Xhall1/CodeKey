@@ -23,6 +23,12 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // Desactivar reglas para preferir el uso de const o let
+      'no-var': 'off',  // Desactivar la regla de no usar var
+      'prefer-const': 'off',  // Desactivar la preferencia por const
+      
+      // Permitir el uso del tipo any
+      '@typescript-eslint/no-explicit-any': 'off', // Desactivar la regla que evita el uso de any
     },
   },
 )
