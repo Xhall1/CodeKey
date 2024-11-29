@@ -92,7 +92,7 @@ const LearningPath: React.FC = () => {
     { id: 2, active: true, route: 'nivel-2', title: "Operaciones Básicas", description: "Domina las operaciones aritméticas, lógicas y de comparación en JavaScript.", icon: Calculator },
     { id: 3, active: true, route: 'nivel-3', title: "Arrays", description: "Explora la creación, manipulación y métodos de arrays en JavaScript.", icon: List },
     { id: 4, active: true, route: 'nivel-4', title: "Funciones", description: "Aprende a crear y utilizar funciones en JavaScript.", icon: Zap },
-    { id: 5, active: false, route: 'nivel-5', title: "Objetos", description: "Descubre cómo trabajar con objetos y sus propiedades en JavaScript.", icon: Globe },
+    { id: 5, active: true, route: 'nivel-5', title: "Objetos", description: "Descubre cómo trabajar con objetos y sus propiedades en JavaScript.", icon: Globe },
     { id: 6, active: false, route: 'nivel-6', title: "DOM y Eventos", description: "Manipula el DOM y maneja eventos en el navegador con JavaScript.", icon: Cpu },
     { id: 7, active: false, route: 'nivel-7', title: "Asincronía", description: "Explora callbacks, promesas y async/await para manejar operaciones asíncronas.", icon: Server },
     { id: 8, active: false, route: 'nivel-8', title: "ES6+ y Módulos", description: "Conoce las características modernas de JavaScript y aprende a trabajar con módulos.", icon: Zap },

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import '../styles/Navbar.css';
 import Logo from '../assets/images/codekey_unimayor.png';
-import ProfilePicture from '../assets/images/ProfilePicture.jpg';
+import ProfilePicture from '../assets/images/xbox.webp';
 import ProfileMenu from './ProfileMenu';
 import { Menu, X } from 'lucide-react';
 

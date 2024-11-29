@@ -4,13 +4,13 @@ import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FuturisticBackground from '../components/FuturisticBackground';
 import { Book, Trophy, Mail } from 'lucide-react';
-import ProfilePicture from '../assets/images/ProfilePicture.jpg';
+import ProfilePicture from '../assets/images/xbox.webp';
 
 const ProfilePage: React.FC = () => {
   // Mock data - replace with actual user data and progress
   const user = {
-    name: "David León",
-    email: "esenoesmio@unimayor.edu.co",
+    name: "San",
+    email: "san@unimayor.edu.co",
     resourcesProgress: 65,
     challengesProgress: 40
   };
